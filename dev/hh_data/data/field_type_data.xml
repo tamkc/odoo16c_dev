@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Character Field Type -->
+    <record id="field_type_char" model="hh_data.field_type">
+        <field name="name">Character Field</field>
+        <field name="description">Field type for characters or short texts.</field>
+        <field name="odoo_field_type">char</field>
+    </record>
+
+    <!-- Text Field Type -->
+    <record id="field_type_text" model="hh_data.field_type">
+        <field name="name">Text Field</field>
+        <field name="description">Field type for longer texts.</field>
+        <field name="odoo_field_type">text</field>
+    </record>
+
+    <!-- Integer Field Type -->
+    <record id="field_type_integer" model="hh_data.field_type">
+        <field name="name">Integer Field</field>
+        <field name="description">Field type for whole numbers.</field>
+        <field name="odoo_field_type">integer</field>
+    </record>
+
+    <!-- Date Field Type -->
+    <record id="field_type_date" model="hh_data.field_type">
+        <field name="name">Date Field</field>
+        <field name="description">Field type for dates.</field>
+        <field name="odoo_field_type">date</field>
+    </record>
+
+    <!-- DateTime Field Type -->
+    <record id="field_type_datetime" model="hh_data.field_type">
+        <field name="name">Date and Time Field</field>
+        <field name="description">Field type for dates and times.</field>
+        <field name="odoo_field_type">datetime</field>
+    </record>
+
+    <!-- Selection Field Type -->
+    <record id="field_type_selection" model="hh_data.field_type">
+        <field name="name">Selection Field</field>
+        <field name="description">Field type for selection options.</field>
+        <field name="odoo_field_type">selection</field>
+    </record>
+
+    <!-- Boolean Field Type -->
+    <record id="field_type_boolean" model="hh_data.field_type">
+        <field name="name">Boolean Field</field>
+        <field name="description">Field type for boolean values.</field>
+        <field name="odoo_field_type">boolean</field>
+    </record>
+
+    <!-- Many2one Field Type -->
+    <record id="field_type_many2one" model="hh_data.field_type">
+        <field name="name">Many2one Field</field>
+        <field name="description">Field type for many-to-one relationships.</field>
+        <field name="odoo_field_type">many2one</field>
+    </record>
+
+    <!-- Float Field Type -->
+    <record id="field_type_float" model="hh_data.field_type">
+        <field name="name">Float Field</field>
+        <field name="description">Field type for floating point numbers.</field>
+        <field name="odoo_field_type">float</field>
+    </record>
+
+    <!-- Monetary Field Type -->
+    <record id="field_type_monetary" model="hh_data.field_type">
+        <field name="name">Monetary Field</field>
+        <field name="description">Field type for monetary amounts.</field>
+        <field name="odoo_field_type">monetary</field>
+    </record>
+
+    <!-- Binary Field Type -->
+    <record id="field_type_binary" model="hh_data.field_type">
+        <field name="name">Binary Field</field>
+        <field name="description">Field type for binary data (e.g., images, files).</field>
+        <field name="odoo_field_type">binary</field>
+    </record>
+
+    <!-- Many2many Field Type -->
+    <!-- <record id="field_type_many2many" model="hh_data.field_type">
+        <field name="name">Many2many Field</field>
+        <field name="description">Field type for many-to-many relationships.</field>
+        <field name="odoo_field_type">many2many</field>
+    </record> -->
+
+    <!-- One2many Field Type -->
+    <!-- <record id="field_type_one2many" model="hh_data.field_type">
+        <field name="name">One2many Field</field>
+        <field name="description">Field type for one-to-many relationships.</field>
+        <field name="odoo_field_type">one2many</field>
+    </record> -->
+
+    <!-- HTML Field Type -->
+    <record id="field_type_html" model="hh_data.field_type">
+        <field name="name">HTML Field</field>
+        <field name="description">Field type for HTML content.</field>
+        <field name="odoo_field_type">html</field>
+    </record>
+
+    <!-- Reference Field Type -->
+    <record id="field_type_reference" model="hh_data.field_type">
+        <field name="name">Reference Field</field>
+        <field name="description">Field type for references to other records.</field>
+        <field name="odoo_field_type">reference</field>
+    </record>
+
+    <!-- Monetary Field Type -->
+    <record id="field_type_monetary" model="hh_data.field_type">
+        <field name="name">Monetary Field</field>
+        <field name="description">Field type for monetary amounts.</field>
+        <field name="odoo_field_type">monetary</field>
+    </record>
+</odoo>

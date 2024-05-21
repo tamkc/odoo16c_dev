@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Define the form view -->
+    <record id="view_demo_data_form" model="ir.ui.view">
+        <field name="name">demo.data.form</field>
+        <field name="model">hh_data.demo_data_set</field>
+        <field name="arch" type="xml">
+            <form string="Demo Data">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="model_id" />
+                        <field name="exclude_fields" />
+                        <field name="ignore_field_types_ids"
+                            widget="many2many_tags" options="{'color_field': 'tag_color'}"
+                        />
+                        <separator />
+                        <field name="data_field_ids">
+                            <tree string="Fields" create="true" delete="true" edit="true"
+                                editable="bottom" decoration-danger="is_required and not value"
+                                decoration-success="is_required and value">
+                                <field name="demo_data_set_id" invisible="1" />
+                                <field name="name" />
+                                <field name="field_type_id" />
+                                <field name="min" />
+                                <field name="max" />
+                                <field name="decimals"
+                                    attrs="{'readonly': [('field_type_id', '!=', 'float')]}" />
+                                <field name="value" />
+                                <field name="is_required" />
+                                <field name="field_description" />
+                            </tree>
+                        </field>
+                    </group>
+                    <separator />
+                    <group col="12">
+                        <div class="flex-spacing" style="text-wrap: nowrap;">
+                            <label for='number_of_rows' class="oe_inline" />
+                            <field name="number_of_rows" class="oe_inline" />
+                            <label for='format' class="oe_inline" />
+                            <field name="format" class="oe_inline" />
+                            <label for='include_header' class="oe_inline" />
+                            <field name="include_header" class="oe_inline" />
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Define the tree view -->
+    <record id="view_demo_data_tree" model="ir.ui.view">
+        <field name="name">demo.data.tree</field>
+        <field name="model">hh_data.demo_data_set</field>
+        <field name="arch" type="xml">
+            <tree string="Demo Data">
+                <field name="name" />
+                <field name="description" />
+                <field name="model_id" />
+                <field name="data_field_ids" />
+            </tree>
+        </field>
+    </record>
+</odoo>
