@@ -5,14 +5,15 @@
 # project : Demo_data
 #
 # *************************************************************
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class DemoDataSet(models.Model):
     _name = 'hh_data.demo_data_set'
     _description = 'Temporary Demo Data'
 
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string='Name', required=True,
+                       default='Demo Data Set {}'.format(fields.Datetime.now().strftime('%Y/%m/%d %H:%M:%S')))
     description = fields.Text(string='Description')
     model_id = fields.Many2one(
         'ir.model', string='Model', required=True, ondelete='cascade')
@@ -29,16 +30,16 @@ class DemoDataSet(models.Model):
         'field_type_id',
         string='Ignore Field Types',
         help='Select field types to ignore',
-        default=lambda self: self._default_field_types()
+        default=lambda self: self._default_ignore_field_types()
     )
 
     number_of_rows = fields.Integer(string='Number of Rows', default=1000)
-    format = fields.Selection(
+    export_format = fields.Selection(
         [('csv', 'CSV'), ('json', 'JSON')], default='csv')
     include_header = fields.Boolean(string='Include Header')
 
     @api.model
-    def _default_field_types(self):
+    def _default_ignore_field_types(self):
         # Fetch field type ids where odoo_field_type is 'binary'
         field_type_ids = self.env['hh_data.field_type'].search(
             [('odoo_field_type', '=', 'binary')])
@@ -88,6 +89,28 @@ class DemoDataSet(models.Model):
                 'field_description': field_info.get('string'),
                 'field_type_id': field_type_id,
                 'is_required': field_info.get('required'),
+                'relation': field_info.get('relation') or self.model_id.model,
+                'value': field_info.get('domain') or field_info.get('selection'),
             }))
 
         self.data_field_ids = data_fields
+
+    def generate_data(self) -> str:
+
+        # Print the generated CSV content
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/demo_data/export/csv?model={self._name}&id={self.id}',
+            'target': 'new',
+        }
+
+    def get_fields_config(self) -> list:
+        """
+        Returns a list of configuration dictionaries for the fields of this demo data set.
+
+        :return: List of configuration dictionaries.
+        """
+        data_fields = self.data_field_ids or []  # Check for null pointer references
+        return [field.get_field_configuration() for field in data_fields]
+
+# b'"Activities","City","Country","Email","Phone","Salesperson","Translated Display Name"\r\n"","","","admin@toppwork.com","","","Administrator"\r\n"","","Hong Kong","admin@toppwork.com","","","My Company"\r\n'

@@ -8,8 +8,10 @@
             <form string="Demo Data">
                 <sheet>
                     <group>
+                        <field name="id" invisible="1" />
                         <field name="name" />
-                        <field name="description" />
+                        <field name="description"
+                            placeholder="Enter a brief description of the data set" />
                         <field name="model_id" />
                         <field name="exclude_fields" />
                         <field name="ignore_field_types_ids"
@@ -17,20 +19,40 @@
                         />
                         <separator />
                         <field name="data_field_ids">
-                            <tree string="Fields" create="true" delete="true" edit="true"
-                                editable="bottom" decoration-danger="is_required and not value"
+                            <tree string="Fields" decoration-danger="is_required and not value"
                                 decoration-success="is_required and value">
                                 <field name="demo_data_set_id" invisible="1" />
                                 <field name="name" />
                                 <field name="field_type_id" />
-                                <field name="min" />
-                                <field name="max" />
-                                <field name="decimals"
-                                    attrs="{'readonly': [('field_type_id', '!=', 'float')]}" />
+                                <field name="relation" force_save="1" />
+                                <field name="min" invisible="1" />
+                                <field name="max" invisible="1" />
+                                <field name="decimals" invisible="1" />
                                 <field name="value" />
                                 <field name="is_required" />
-                                <field name="field_description" />
                             </tree>
+                            <form string="Field Details">
+                                <sheet>
+                                    <div class="oe_title">
+                                        <label for="name" class="oe_edit_only" />
+                                        <h1>
+                                            <field name="name" placeholder="Describe the item..." />
+                                        </h1>
+                                    </div>
+                                    <group>
+                                        <field name="field_type_id" />
+                                        <field name="relation" />
+                                        <field name="min" />
+                                        <field name="max" />
+                                        <field name="decimals" />
+                                        <field name="value" />
+                                        <field name="is_required" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="field_description" />
+                                    </group>
+                                </sheet>
+                            </form>
                         </field>
                     </group>
                     <separator />
@@ -38,10 +60,12 @@
                         <div class="flex-spacing" style="text-wrap: nowrap;">
                             <label for='number_of_rows' class="oe_inline" />
                             <field name="number_of_rows" class="oe_inline" />
-                            <label for='format' class="oe_inline" />
-                            <field name="format" class="oe_inline" />
+                            <label for='export_format' class="oe_inline" />
+                            <field name="export_format" class="oe_inline" />
                             <label for='include_header' class="oe_inline" />
                             <field name="include_header" class="oe_inline" />
+                            <button name="generate_data" type="object"
+                                class="oe_inlie btn btn-primary" string="Export Data" />
                         </div>
                     </group>
                 </sheet>
