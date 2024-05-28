@@ -91,7 +91,7 @@ class DemoDataField(models.Model):
         elif field_type == 'many2one':
             config['relation'] = self.relation
             config['domain'] = self.value
-        elif field_type in {'char', 'text', 'html', 'json'}:
+        elif field_type in {'char', 'text', 'html', 'json', 'selection'}:
             config['value'] = self.value
 
         return config

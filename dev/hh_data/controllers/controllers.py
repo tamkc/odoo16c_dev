@@ -68,8 +68,8 @@ class DemoDataExport(http.Controller):
         for data in rows:
             row = []
             for d in data:
-                # Spreadsheet apps tend to detect formulas on leading =, + and -
-                if isinstance(d, str) and d.startswith(('=', '-', '+')):
+                # Spreadsheet apps tend to detect formulas on leading =, +
+                if isinstance(d, str) and d.startswith(('=', '+')):
                     d = f"'{d}"
 
                 row.append(pycompat.to_text(d))

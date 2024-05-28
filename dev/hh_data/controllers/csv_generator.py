@@ -1,6 +1,7 @@
 import random
 import string
 from typing import List, Dict
+import re
 
 
 class CsvStringGenerator:
@@ -15,7 +16,11 @@ class CsvStringGenerator:
             return 'text'
         elif field_type == 'integer':
             return str(random.randint(config.get('min', 0), config.get('max', 1000)))
-        # Add more field types as necessary
+        elif field_type == 'selection':
+            selection_list = re.findall(r"\((.*?)\)", config.get('value'))
+            selection_list = [tuple(eval(x) for x in t.split(",")) for t in selection_list]
+            random_value = random.choice(selection_list)
+            return str(random_value[0])
         else:
             return " "
 

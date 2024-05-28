@@ -112,5 +112,3 @@ class DemoDataSet(models.Model):
         """
         data_fields = self.data_field_ids or []  # Check for null pointer references
         return [field.get_field_configuration() for field in data_fields]
-
-# b'"Activities","City","Country","Email","Phone","Salesperson","Translated Display Name"\r\n"","","","admin@toppwork.com","","","Administrator"\r\n"","","Hong Kong","admin@toppwork.com","","","My Company"\r\n'
