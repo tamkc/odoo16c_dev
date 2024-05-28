@@ -89,9 +89,15 @@ class DemoDataField(models.Model):
             config['max'] = self.max
             config['decimals'] = self.decimals
         elif field_type == 'many2one':
-            config['relation'] = self.relation
-            config['domain'] = self.value
+            if self.relation:
+                relation = self.env[self.relation]
+                domain = self.value or []
+                # Ensure domain is a list of tuples
+                if isinstance(domain, list) and all(isinstance(cond, tuple) and len(cond) == 3 for cond in domain):
+                    config['value'] = relation.search(domain).ids
+                else:
+                    raise ValueError(
+                        "Invalid domain format: Expected a list of 3-tuples")
         elif field_type in {'char', 'text', 'html', 'json', 'selection'}:
             config['value'] = self.value
-
         return config

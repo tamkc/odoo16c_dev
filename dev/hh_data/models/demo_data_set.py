@@ -6,6 +6,8 @@
 #
 # *************************************************************
 from odoo import models, fields, api, _
+from faker import Faker
+fake = Faker()
 
 
 class DemoDataSet(models.Model):
@@ -95,7 +97,7 @@ class DemoDataSet(models.Model):
 
         self.data_field_ids = data_fields
 
-    def generate_data(self) -> str:
+    def generate_data(self) -> dict:
 
         # Print the generated CSV content
         return {
