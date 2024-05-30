@@ -48,6 +48,9 @@ class DemoDataField(models.Model):
     # ---------------------------- Many2one Interface ---------------------------- #
     relation = fields.Char(string='Model', readonly=True)
 
+    # ------------------------------ Char Interface ------------------------------ #
+    template_id = fields.Many2one('hh_data.template', string='Template')
+
     @api.model_create_multi
     def create(self, vals_list):
         field_type_model = self.env['hh_data.field_type']

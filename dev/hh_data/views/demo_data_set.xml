@@ -24,12 +24,13 @@
                                 <field name="demo_data_set_id" invisible="1" />
                                 <field name="name" />
                                 <field name="field_type_id" />
-                                <field name="relation" force_save="1" />
-                                <field name="min" invisible="1" />
-                                <field name="max" invisible="1" />
-                                <field name="decimals" invisible="1" />
+                                <field name="relation" force_save="1" optional="show" />
+                                <field name="min" invisible="1" optional="show" />
+                                <field name="max" invisible="1" optional="show" />
+                                <field name="decimals" invisible="1" optional="show" />
                                 <field name="value" />
-                                <field name="is_required" />
+                                <field name="template_id" />
+                                <field name="is_required" optional="show" />
                             </tree>
                             <form string="Field Details">
                                 <sheet>
@@ -49,6 +50,7 @@
                                         <field name="is_required" />
                                         <field name="date_from" />
                                         <field name="date_to" />
+                                        <field name="template_id" />
                                         <field name="field_description" />
                                     </group>
                                 </sheet>

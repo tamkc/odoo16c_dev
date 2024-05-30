@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hh_data_demo_data_field_user,access_hh_data.demo_data_field,model_hh_data_demo_data_field,base.group_user,1,1,1,1
 access_hh_data_demo_data_set_user,access_hh_data.demo_data_set,model_hh_data_demo_data_set,base.group_user,1,1,1,1
-access_hh_data_field_type_user,undefined.hh_data.field_type,model_hh_data_field_type,base.group_user,1,1,1,1
+access_hh_data_field_type_user,access_hh_data.field_type,model_hh_data_field_type,base.group_user,1,1,1,1
+access_hh_data_template_user,access_hh_data.template,model_hh_data_template,base.group_user,1,1,1,1

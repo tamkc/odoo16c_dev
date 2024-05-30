@@ -31,6 +31,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/demo_data_set.xml",
+        "views/template.xml",        
         "views/menu.xml",
         "data/field_type_data.xml",
         ]

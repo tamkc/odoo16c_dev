@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Define the form view -->
+    <record id="view_template_form" model="ir.ui.view">
+        <field name="name">demo.template.form</field>
+        <field name="model">hh_data.template</field>
+        <field name="arch" type="xml">
+            <form string="Demo Data">
+                <sheet>
+                    <group>
+                        <field name="template_type" widget="selection_badge" />
+                    </group>
+                    <separator string="Configuration" colspan="4" />
+                    <group>
+                        <field name="item_list" />
+                        <field name="code" widget="ace" options="{'mode': 'python'}"
+                            attrs="{'readonly': [('template_type', '!=', 'code')]}"
+                            force_save="1"
+                        />
+                    </group>
+                    <separator string="Preview" colspan="4" />
+                    <group>
+                        <field name="preview" />
+                    </group>
+                    <group>
+                        <label for='preview_data_limit' class="oe_inline" />
+                        <div>
+                            <field name="preview_data_limit" class="oe_inline" />
+                            <button name="preview_data" type="object" string="Preview"
+                                class="oe_inline" />
+                        </div>
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
